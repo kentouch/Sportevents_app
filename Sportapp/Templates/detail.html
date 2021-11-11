@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--start of the center-->
+<div class="center clearfix">
+   <div class="col-sm-2 space_all">
+
+<div class="center_left clearfix">
+   <br/>
+   <div class="center_left_1">
+      <br/>
+     <h4 class="border_bottom_1">Latest News</h4>
+     <p><a href="detail.html">PSG vs MN CITY</a></p>
+     <p><a href="detail.html">ROLANGALOS</a></p>
+     <p><a href="detail.html">ROLANGALOS</a></p>
+     <p><a href="detail.html">ROLANGALOS</a></p>
+     <p><a href="detail.html">ROLANGALOS</a></p>
+     <p><a href="detail.html">ROLANGALOS</a></p>
+     <p class="border_none_1"><a href="detail.html">TOURNOI UNIVERSIRTAIRE</a></p>
+   </div>
+   <div class="center_left_2">
+     <h4>Subscription</h4>
+     <p class="text-center p_1"><a href="detail.html">Subscribe</a></p>
+     
+     <!-- changer le format -->
+     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+           <div class="loginmodal-container">
+              <h1>Subscribe to our Newsletter</h1><br>
+            <form>
+              <input type="text" name="user" placeholder="Username">
+              <input type="password" name="pass" placeholder="Password">
+              <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            </form>
+              
+            <div class="login-help">
+              <a href="detail.html">Register</a> - <a href="detail.html">Forgot Password</a>
+            </div>
+           </div>
+        </div>
+      </div>
+      <!-- jusqu'ici-->
+
+   </div>
+   <div class="center_left_3">
+     <h4 class="border_bottom_1">Trending News</h4>
+     <p><a href="detail.html">Jeux Olympique</a></p>
+     <p><a href="detail.html">Jeux Olympique</a></p>
+     <p><a href="detail.html">Jeux Olympique</a></p>
+     <p><a href="detail.html">Jeux Olympique</a></p>
+     <p class="border_none_1"><a href="detail.html">Jeux Olympique</a></p>
+   </div>
+   
+   <div class="center_left_3">
+     <h4 class="border_bottom_1">Follow Us</h4>
+     <p>
+     <a href="detail.html"><i class="fa fa-facebook tag_1"></i>Facebook</a>
+     <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a>
+     </p>
+     <p>
+     <a href="detail.html"><i class="fa fa-twitter tag_2"></i>Twitter</a>
+     <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a>
+     </p>
+     <p class="border_none_1">
+     <a href="detail.html"><i class="fa fa-instagram tag_3"></i>Instagram</a>
+     <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a></p>
+   </div>
+  </div>
+  </div>
+  <br/>
+  
+<!-- cener middle -->
+<div class="col-sm-7">
+   <div class="center_middle clearfix">
+     <div class="center_middle_1">
+          <img src="{{ post.post_image.url }}" alt="..." width="100%">
+      </div>
+
+      <div class="center_middle_2 clearfix">
+         <p><a href="#"><span>{{ post.created_on }}</span></a></p>
+         <h1><a href="#">{{ post.title}}</a></h1>
+         <p class="p_1 border_bottom_1"><a href="#">{{ post.title }}</a></p>
+         <div class="clear_1 clearfix">
+            <p> {{ post.content }}<p>
+         <form action="{% url 'like_post' post.pk %}"
+             method = "POST">
+            {% csrf_token %}
+            <button type="submit", name='post_id', value="{{ post.id }}", class="btn btn-primary btn-sm">{{ total_likes }} Like <i class="fa fa-thumbs-up"></i></button>
+          </form>
+         </div>
+
+         <br/><br/>
+
+         <div class="comments">
+            <h3>Comments...</h3>
+            <hr/>
+            
+
+            {% if not post.comments.all %}
+                No comments yet...<a href="{% url 'Add_comment' post.pk %} " style="color: rgb(76, 208, 231);"> Add One</a>
+            {% else %}
+               {% for comment in post.comments.all %}
+               <strong>
+                  {{ comment.name}} | {{ comment.added_date }}
+               </strong>
+               <br />
+                  {{ comment.body}}
+
+               <br/> <br/>
+                  
+               {% endfor %}
+               <a href="{% url 'Add_comment' post.pk %} " style="color: rgb(76, 208, 231); border: 1px solid;">Add Comment</a>
+            {% endif %}
+           
+         </div>
+     
+      </div>
+    
+   
+ </div> 
+ <br/><br/><br/>
+
+</div> 
+ 
+<br/><br/>
+  
+ 
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!--start of the center-->
+<section id="center">
+	<div class="container">
+	 <div class="row">
+	  <div class="center clearfix">
+	   <div class="col-sm-2 space_all">
+		<div class="center_left clearfix">
+			
+      <br/>
+		 <div class="center_left_1">
+       
+      <h4 class="border_bottom_1">Latest News</h4>
+      <p><a href="detail.html">PSG vs MN CITY</a></p>
+      <p><a href="detail.html">ROLANGALOS</a></p>
+      <p><a href="detail.html">ROLANGALOS</a></p>
+      <p><a href="detail.html">ROLANGALOS</a></p>
+      <p><a href="detail.html">ROLANGALOS</a></p>
+      <p><a href="detail.html">ROLANGALOS</a></p>
+      <p class="border_none_1"><a href="detail.html">TOURNOI UNIVERSIRTAIRE</a></p>
+    </div>
+    <div class="center_left_3">
+      <h4 class="border_bottom_1">Trending News</h4>
+      <p><a href="detail.html">Jeux Olympique</a></p>
+      <p><a href="detail.html">Jeux Olympique</a></p>
+      <p><a href="detail.html">Jeux Olympique</a></p>
+      <p><a href="detail.html">Jeux Olympique</a></p>
+      <p class="border_none_1"><a href="detail.html">Jeux Olympique</a></p>
+    </div>
+    <div class="center_left_3">
+      <h4 class="border_bottom_1">Follow Us</h4>
+      <p>
+      <a href="detail.html"><i class="fa fa-facebook tag_1"></i>Facebook</a>
+      <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a>
+      </p>
+      <p>
+      <a href="detail.html"><i class="fa fa-twitter tag_2"></i>Twitter</a>
+      <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a>
+      </p>
+      <p class="border_none_1">
+      <a href="detail.html"><i class="fa fa-instagram tag_3"></i>Instagram</a>
+      <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a></p>
+    </div>
+    <div class="center_left_3">
+      <h4 class="border_bottom_1">PARTNER Sites</h4>
+      <p>
+      <a href="detail.html">Kigali Today</a>
+      <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a>
+      </p>
+      <p class="border_none_1">
+      <a href="detail.html">Sports News</a>
+      <a class="pull-right" href="detail.html"><i class="fa fa-link"></i></a></p>
+    </div>
+    
+    <br/>
+    
+      
+      <!-- changer le format -->
+     
+       <!-- jusqu'ici-->
+ 
+  
+   
+    
+  
+   </div>
+   </div>
+   <br/>
+
+    <!---end of left center-->
+           <!-- start of right side --->
+           <div class="col-sm-7">
+            <div class="center_middle clearfix">
+            <!--<div class="center_middle_1"></div>-->
+                {% if search %}
+                 {% for post in posts %}
+                 <div class="center_middle_3 clearfix">
+                  <div class="center_middle_3_inner">
+                     <h5><a href="detail.html">{{post.title}}</a></h5>
+                 	 <h6><a href="detail.html">{{post.created_on}}</a></h6>
+                   </div>
+                   <div class="center_middle_3_inner_1 clearfix">
+                  <div class="col-sm-4">
+                   <img src="{{ post.post_image.url }}" width="100%">
+                  </div>
+                  <div class="col-sm-8">
+                   <h4><a href="detail.html">{{post.content}}</a></h4>
+                   <p><a href="detail.html"> {{post.content}} </a></p>
+                  </div>
+                   </div>
+                   </div>
+                   </div>
+                  {% endfor %}
+                {% else %}
+                <h1 style="color: rgb(240, 99, 99);"> No results found...</h1>
+                {% endif %}
+              <div class="login clearfix">
+               <h4>Subscribe to our Newsletter</h4>
+               
+               <div class="subscription_form">
+                   <form>
+                     <input type="text" placeholder="Enter your email"><button> Subscribe</button>
+                   </form>
+               </div>
+              </div>
+            </div>
+
+   
+   
+   <!----  PRENDRE UNE COPIE DE LA PAGE ICI ET LA METTRE SUR "HOME" -->
+
+{% endblock %}

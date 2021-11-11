@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		 <link href="https://fonts.googleapis.com/css?family=Lustria|Roboto|Saira+Semi+Condensed" rel="stylesheet">
+		<!-- Add icon library -->
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/comnt.js' %}"></script>
+	</head>
+  
+<body>
+
+<!--- Start header-->
+<section id="header" class="cd-secondary-nav">
+   <div class="container-fluid">
+   <div class="row">
+      <div class="col-md-12">
+         <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html"><span>SPORTS</span></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
+				<!-- start of the navbar-->
+               <ul class="nav navbar-nav nav_1">
+                  <li><a class="pad_1" href="{% url 'home' %}">Home</a></li>
+		          <li class="dropdown">
+                <a class="pad_1" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Categories<i class="arrow down"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu">
+                 {% for category in category_list %}
+                  <li><a href="/category/{{category.name}}">{{category.name|title}}</a></li>
+                 {% endfor %}
+            
+
+          </ul>
+        </li>
+			   </ul>	
+		
+			   <div class="topnav">
+				
+          <div class="search-container">
+            <form action= "{% url 'search-results' %}" method=POST>
+             {% csrf_token %}
+              <input type="text" placeholder="Search title preferences..." name="search">
+              
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+			  </div>
+                </li>
+				      
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </nav>
+      </div>
+   </div>
+</div>
+</section>
+<!-- End of header -->
+
+
+<section id="center">
+  <div class="container">
+      <div class="row">
+
+{% block content %}
+{% endblock %}
+
+</div> 
+</div>
+</section>
+
+
+<!-- start of footer -->
+<section id="footer">
+	<div class="container">
+	  <div class="row">
+		<div class="col-sm-7 footer_1">
+		 <p class="p_4"> <a href="detail.html">OUR SITE</a> is made for sports events</p>
+		  <p class="p_5">© 2021 Sports. All Rights Reserved for<a href="http://www.templateonweb.com">Ruzindana Kent</a></p>
+		</div>
+		<div class="col-sm-5 footer_2">
+		 <p class="text-right">Sports events!!</p>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+   </body>
+  </html> 
+       
+  
