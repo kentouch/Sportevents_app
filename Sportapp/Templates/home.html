@@ -96,8 +96,8 @@
 			  
 			  {% for post in object_list %}
 			<div class="center_middle_2 clearfix">
-				<h3><a href="detail.html"><span> {{ post.title }}</span></a></h3>
-				<p class="p_1 border_bottom_1"><a href="detail.html"> {{ post.category }}</a></p>
+				<h3><a href="{% url 'post-detail' post.pk %}"><span> {{ post.title }}</span></a></h3>
+				<p class="p_1 border_bottom_1"><a href="{% url 'post-detail' post.pk %}"> {{ post.category }}</a></p>
 				<div class="clear_1 clearfix">
 					<p>{{ post.subtitle }}</p>
 					<h6>{{ post.created_on }}</h6>
